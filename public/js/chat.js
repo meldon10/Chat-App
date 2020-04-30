@@ -1,5 +1,5 @@
 const $Form = document.querySelector('#submit')
-const $locationButton = document.querySelector('#userLocation')
+//const $locationButton = document.querySelector('#userLocation')
 const $messages = document.querySelector('#message-form')
 
 //messageTemplates
@@ -82,24 +82,24 @@ $Form.addEventListener('click',(event)=>{
     })
 })
 
-$locationButton.addEventListener('click',(event)=>{
-    event.preventDefault()
-    if(!navigator.geolocation){
-        return alert('Your Browser Does Not Support Geolocation')
-    }
+// $locationButton.addEventListener('click',(event)=>{
+//     event.preventDefault()
+//     if(!navigator.geolocation){
+//         return alert('Your Browser Does Not Support Geolocation')
+//     }
 
-    $locationButton.setAttribute('disabled','disabled')
+//     $locationButton.setAttribute('disabled','disabled')
    
-    navigator.geolocation.getCurrentPosition((location)=>{
-        const lat = location.coords.latitude
-        const long= location.coords.longitude
+//     navigator.geolocation.getCurrentPosition((location)=>{
+//         const lat = location.coords.latitude
+//         const long= location.coords.longitude
         
-        socket.emit('sendLocation',lat,long,()=>{
-            $locationButton.removeAttribute('disabled')
+//         socket.emit('sendLocation',lat,long,()=>{
+//             $locationButton.removeAttribute('disabled')
             
-        })
-    })
-})
+//         })
+//     })
+// })
 
 socket.emit('join',data,(error)=>{
     if(error){
